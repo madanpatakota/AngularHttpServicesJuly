@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "Customers": [
+    {
+      "CustomerID": "1",
+      "CompanyName": "Google",
+      "ContactName": "James",
+      "Address": "UK",
+      "ContactTitle": "Product Owner",
+      "id": 1
+    },
+    {
+      "CustomerID": 2,
+      "CompanyName": "Onpassive",
+      "ContactName": "Madan",
+      "Address": "Marthalli",
+      "ContactTitle": "devr",
+      "ID": 102,
+      "id": 2
+    }
+  ]
+}
