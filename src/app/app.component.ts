@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -20,9 +20,22 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     //https://api.firstamedu.com/api/api/class/firstamedusers
     // url might be different
+
+
+     //let myhttpHeaders = new HttpHeaders({ 'userEmailID':'madan.patakota@gmail.com'});
+
+
     const dataURL = this.httpSevice.get(
-      'https://jsonplaceholder.typicode.com/posts'
+      'https://jsonplaceholder.typicode.com/posts', 
+      { 
+        headers : 
+        { 
+          'UserEmailID':'madan.patakota@gmail.com'
+        } 
+      }
     );
+
+
 
     dataURL.subscribe((data) => {
       this.customersArray = data;
@@ -48,7 +61,19 @@ export class AppComponent implements OnInit {
     //   console.log("localhost data" ,  data);
     // })
 
-    const Customers = this.httpSevice.get('http://localhost:3000/Customers');
+    //http://localhost:3000/Customers?location=bangolore
+    const Customers = this.httpSevice.get('http://localhost:3000/Customers', {
+      headers : 
+        { 
+          'companyname':'localCompany',
+          'userinformation' : 'telugu,kannada,hindi'
+        } ,
+      params: { 
+        'location' : 'Banoglore',
+        'teamsize' : '10'
+      }
+      
+    });
 
     Customers.subscribe((data) => {
       console.log('Customers Data', data);
@@ -108,9 +133,6 @@ export class AppComponent implements OnInit {
 
   }
 
-
-
-
   PatchCustomer(){
     const CustomersUpdate = this.httpSevice.patch(
       'http://localhost:3000/Customers/'+ 3,
@@ -126,9 +148,6 @@ export class AppComponent implements OnInit {
 
   }
 
-
-
-  
 
   //.net people they will take the url
   // from url they will take the ID
